@@ -18,9 +18,9 @@
 pragma solidity ^0.8.6;
 
 import { Ownable } from '@openzeppelin/contracts/access/Ownable.sol';
-import { ERC721Checkpointable } from './base/ERC721Checkpointable.sol';
-import { INounsDescriptorMinimal } from './interfaces/INounsDescriptorMinimal.sol';
-import { INounsSeeder } from './interfaces/INounsSeeder.sol';
+// import { ERC721Checkpointable } from './base/ERC721Checkpointable.sol';
+// import { INounsDescriptorMinimal } from './interfaces/INounsDescriptorMinimal.sol';
+// import { INounsSeeder } from './interfaces/INounsSeeder.sol';
 import { INounsToken } from './interfaces/INounsToken.sol';
 import { ERC721 } from './base/ERC721.sol';
 import { IERC721 } from '@openzeppelin/contracts/token/ERC721/IERC721.sol';
