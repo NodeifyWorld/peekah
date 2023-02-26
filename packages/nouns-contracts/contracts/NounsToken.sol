@@ -28,7 +28,7 @@ import { IProxyRegistry } from './external/opensea/IProxyRegistry.sol';
 
 contract NounsToken is INounsToken, Ownable, ERC721Checkpointable {
     // The nounders DAO address (creators org)
-    address public noundersDAO;
+    address public noundersDAO; /*change to owner?*/
 
     // An address who has permissions to mint Nouns
     address public minter;
@@ -85,12 +85,12 @@ contract NounsToken is INounsToken, Ownable, ERC721Checkpointable {
     }
 
     /**
-     * @notice Require that the sender is the nounders DAO.
+     * @notice Require that the sender is the nounders DAO. PROBABLY DON'T NEED THIS MODIFIER ANYMORE BECAUSE NOT USING DAO?
      */
-    modifier onlyNoundersDAO() {
-        require(msg.sender == noundersDAO, 'Sender is not the nounders DAO');
-        _;
-    }
+    // modifier onlyNoundersDAO() {
+    //     require(msg.sender == noundersDAO, 'Sender is not the nounders DAO');
+    //     _;
+    // }
 
     /**
      * @notice Require that the sender is the minter.
@@ -101,7 +101,7 @@ contract NounsToken is INounsToken, Ownable, ERC721Checkpointable {
     }
 
     constructor(
-        address _noundersDAO,
+        address _noundersDAO, /*Replace with owners address?*/
         address _minter,
         INounsDescriptorMinimal _descriptor,
         INounsSeeder _seeder,
@@ -180,14 +180,14 @@ contract NounsToken is INounsToken, Ownable, ERC721Checkpointable {
     }
 
     /**
-     * @notice Set the nounders DAO.
+     * @notice Set the nounders DAO. Don't need anymore?
      * @dev Only callable by the nounders DAO when not locked.
      */
-    function setNoundersDAO(address _noundersDAO) external override onlyNoundersDAO {
-        noundersDAO = _noundersDAO;
+    // function setNoundersDAO(address _noundersDAO) external override onlyNoundersDAO {
+    //     noundersDAO = _noundersDAO;
 
-        emit NoundersDAOUpdated(_noundersDAO);
-    }
+    //     emit NoundersDAOUpdated(_noundersDAO);
+    // }
 
     /**
      * @notice Set the token minter.
