@@ -43,9 +43,9 @@ const config: HardhatUserConfig = {
       initialBaseFeePerGas: 0,
     },
   },
-  etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
-  },
+  // etherscan: {
+  //   apiKey: process.env.ETHERSCAN_API_KEY,
+  // },
   abiExporter: {
     path: './abi',
     clear: true,
