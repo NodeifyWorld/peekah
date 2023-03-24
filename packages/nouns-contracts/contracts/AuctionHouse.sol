@@ -81,7 +81,7 @@ contract NounAuction is ERC721URIStorage, Ownable {
         );
 
         auctions[tokenId] = auction;
-        ongoingAuctions.add(tokenId);
+        ongoingAuctions.add(tokenId); // Add to set of ongoingAuctions
 
         // Set minimum bid for auction
         if (startingPrice < minimumBid) {
@@ -89,7 +89,7 @@ contract NounAuction is ERC721URIStorage, Ownable {
         }
 
         startingPrices[tokenId] = startingPrice;
-        auctionDurations[tokenId] = duration;
+        auctionDurations[tokenId] = duration; 
 
         emit AuctionCreated(tokenId, startingPrice, block.timestamp, block.timestamp.add(duration * 1 hours));
     }
@@ -144,11 +144,11 @@ contract NounAuction is ERC721URIStorage, Ownable {
             lockedFundsByBidder[auction.highestBidder] = lockedFundsByBidder[auction.highestBidder].sub(auction.highestBid).add(remainingFunds);
         }
             // Reset auction for token
-        delete auctions[tokenId];
-        ongoingAuctions.remove(tokenId);
+        delete auctions[tokenId]; // This is only to reduce storage space, either way we move on from this token ID once the auction is over
+        ongoingAuctions.remove(tokenId); // remove from set of ongoingAuctions
 
             // Create new auction for next token
-            createAuction(tokenId.add(1), startingPrices[tokenId], auctionDurations[tokenId]);
+            createAuction(tokenId.add(1), startingPrices[tokenId], auctionDurations[tokenId]); // Default behaviour is to use same starting price and duration as previous token
 
         emit AuctionEnded(tokenId, auction.highestBidder, auction.highestBid);
     }
